@@ -53,8 +53,11 @@ void RobotContainer::SetDefaultCommands()
         const auto rotXInput = frc::ApplyDeadband(m_primaryController.GetRightY(), kDeadband);
         const auto rotYInput = frc::ApplyDeadband(m_primaryController.GetRightX(), kDeadband);
 
-        const auto xSpeed = m_xspeedLimiter.Calculate(xInput) * m_drive.m_currentMaxSpeed; //kMaxSpeed;
-        auto ySpeed = m_yspeedLimiter.Calculate(yInput) * m_drive.m_currentMaxSpeed; //kMaxSpeed;
+        // Slew rate limiters were running right and down stick actions longer as if coast was on the drive motor???
+        const units::meters_per_second_t xSpeed = units::meters_per_second_t{xInput};
+        units::meters_per_second_t ySpeed = units::meters_per_second_t{yInput};
+        //const auto xSpeed = m_xspeedLimiter.Calculate(xInput) * m_drive.m_currentMaxSpeed; //kMaxSpeed;
+        // auto ySpeed = m_yspeedLimiter.Calculate(yInput) * m_drive.m_currentMaxSpeed; //kMaxSpeed;
         auto rot = m_rotLimiter.Calculate(rotInput) * kMaxAngularSpeed;      
         const double rotX = m_rotLimiter.Calculate(rotXInput);
         const double rotY = m_rotLimiter.Calculate(rotYInput);

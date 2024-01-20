@@ -182,7 +182,11 @@ double SwerveModule::VoltageToRadians(double Voltage)
 {
     frc::SmartDashboard::PutNumber("Voltage" + m_id, Voltage);
     double angle = fmod(Voltage * DriveConstants::kTurnVoltageToRadians - m_offset + 2 * std::numbers::pi, 2 * std::numbers::pi);
+#ifndef ZERO_OFFSETS
+    // angle ranges from 0 to 2pi
+    // This reverses it from 2pi to 0 
     angle = 2 * std::numbers::pi - angle;
+#endif
 
     return angle;
 }

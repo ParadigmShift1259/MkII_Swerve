@@ -4,6 +4,8 @@
 
 #pragma once
 
+//#define ZERO_OFFSETS
+
 #include <numbers>
 #include <string>
 #include <wpi/DataLog.h>

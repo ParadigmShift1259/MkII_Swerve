@@ -101,14 +101,14 @@ private:
   const frc::Translation2d m_rearLeftLocation{-kWheelBase / 2, kTrackWidth / 2};
   const frc::Translation2d m_rearRightLocation{-kWheelBase / 2, -kTrackWidth / 2};
   
-//#define ZERO_OFFSETS
+// Define in SwerveModule.h #define ZERO_OFFSETS
 #ifdef ZERO_OFFSETS
   static constexpr double kFLoffset = 0.0;    static constexpr double kFRoffset = 0.0;
   static constexpr double kBLoffset = 0.0;    static constexpr double kBRoffset = 0.0;
 #else
   // Mk2 swerve modules
-  static constexpr double kFLoffset = 3.192;    static constexpr double kFRoffset = 5.034;
-  static constexpr double kBLoffset = 5.672;    static constexpr double kBRoffset = 0.594;
+  static constexpr double kFLoffset = 3.189;    static constexpr double kFRoffset = 5.064;
+  static constexpr double kBLoffset = 0.714;    static constexpr double kBRoffset = 0.625;
 #endif
 
   SwerveModule m_frontLeft  { kFrontLeftDriveCANID, kFrontLeftTurningCANID, kFLoffset, false };
