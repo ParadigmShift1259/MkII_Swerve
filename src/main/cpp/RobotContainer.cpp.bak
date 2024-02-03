@@ -3,7 +3,6 @@
 // the WPILib BSD license file in the root directory of this project.
 
 #include "RobotContainer.h"
-#include "commands/GoToPodiumCommand.h"
 
 #include <frc2/command/button/Trigger.h>
 #include <frc2/command/RunCommand.h>
@@ -25,7 +24,7 @@ void RobotContainer::ConfigureBindings() {
   // Primary
   // Keep the bindings in this order
   // A, B, X, Y, Left Bumper, Right Bumper, Back, Start
-  primary.A().WhileTrue(GoToPodiumCommand(*this).ToPtr());
+  // primary.A().OnTrue(ClawOpen(*this).ToPtr());
   // primary.B().OnTrue(ClawClose(*this).ToPtr());
   // primary.X().OnTrue(RetrieveGamePiece(*this).ToPtr());
   // primary.Y().OnTrue(ReleaseCone(*this).ToPtr());

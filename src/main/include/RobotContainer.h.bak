@@ -12,7 +12,6 @@
 
 #include "Constants.h"
 #include "subsystems/DriveSubsystem.h"
-#include "ISubsystemAccess.h"
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -21,21 +20,16 @@
  * scheduler calls).  Instead, the structure of the robot (including subsystems,
  * commands, and trigger mappings) should be declared here.
  */
-class RobotContainer : public ISubsystemAccess
-{
+class RobotContainer {
  public:
   RobotContainer();
-
-  // ISubsystemAcces Implementation
-  DriveSubsystem&        GetDrive() override { return m_drive; }
-  VisionSubsystem&       GetVision() override { return m_vision; }
 
   // frc2::CommandPtr GetAutonomousCommand();
 
  private:
   void SetDefaultCommands();
   void ConfigureBindings();
-  
+
   // Replace with CommandPS4Controller or CommandJoystick if needed
   frc2::CommandXboxController m_primaryController{
       OperatorConstants::kDriverControllerPort};
@@ -46,7 +40,6 @@ class RobotContainer : public ISubsystemAccess
 
   // The robot's subsystems are defined here...
   DriveSubsystem m_drive;
-  VisionSubsystem m_vision;
   bool m_fieldRelative = false; //true;
   
   frc2::InstantCommand m_toggleFieldRelative{[this] { m_fieldRelative = !m_fieldRelative; }, {}};
